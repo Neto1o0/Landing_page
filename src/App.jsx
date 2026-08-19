@@ -80,7 +80,6 @@ function App() {
 
         <img src="/profile.jpg" className="top-left-logo" alt="Logo" />
         <div className="bottom-left-text">NETO</div>
-        <div className="scroll-indicator">↓</div>
 
         <a
           href="#"
@@ -92,7 +91,10 @@ function App() {
           {showAbout ? 'CLOSE' : 'ABOUT'}
         </a>
 
-        <InfoWidget cursorPos={cursorPos} />
+        <div style={{ opacity: showAbout ? 0 : 1, transition: 'opacity 0.4s ease', pointerEvents: showAbout ? 'none' : 'auto' }}>
+          <div className="scroll-indicator">↓</div>
+          <InfoWidget cursorPos={cursorPos} />
+        </div>
 
         <div className={`cards-wrapper ${showAbout ? 'hidden' : ''}`}>
           {cardsData.map((card, index) => (

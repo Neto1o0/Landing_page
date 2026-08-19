@@ -141,7 +141,8 @@ body {
   opacity: 1;
 }
 
-.card-container:hover .fragment-block {
+.card-container:hover .fragment-block,
+.card-container.revealed .fragment-block {
   /* Explode outwards randomly using CSS variables defined in inline style */
   transform: scale(0.2) translate(var(--tx), var(--ty)) rotate(15deg);
   opacity: 0;
