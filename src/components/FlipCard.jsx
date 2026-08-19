@@ -28,35 +28,6 @@ const FlipCard = ({ index, label, frontImage, backImage, title, description, lin
     return arr;
   }, []);
 
-  useEffect(() => {
-    if (window.innerWidth > 1024) return; // Only apply on mobile
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const timer = setTimeout(() => {
-            setIsRevealed(true);
-          }, 1000);
-          entry.target._revealTimer = timer;
-        } else {
-          clearTimeout(entry.target._revealTimer);
-          setIsRevealed(false);
-        }
-      });
-    }, { threshold: 0.6 });
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-      if (cardRef.current && cardRef.current._revealTimer) {
-        clearTimeout(cardRef.current._revealTimer);
-      }
-    };
-  }, []);
-
   const handleMouseEnter = (e) => {
     const labelEl = e.currentTarget.querySelector('h3');
     if (labelEl) {

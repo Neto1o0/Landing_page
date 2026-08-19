@@ -493,4 +493,8 @@ body {
     top: 20px;
     left: 20px;
   }
+
+  .fragment-front {
+    display: none !important;
+  }
 }
